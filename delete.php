@@ -2,7 +2,7 @@
 
 include "config.php"; // Using database connection file here
 
-$id = $_GET['id']; // get id through query string
+$id = (isset($_GET['id']) ? $_GET['id'] : ''); // get id through query string
 
 $del = mysqli_query($conn,"delete from Users where id = '$id'"); // delete query
 
