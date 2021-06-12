@@ -1,0 +1,31 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+}
+
+.item1 { grid-area: left; }
+
+.item2 { grid-area: right; }
+
+.item3 { grid-area: footer; 
+    background-color: #6c5ce7;
+    color: white;
+}
+
+.item4 { grid-area: flat; }
+
+.grid-container {
+  display: grid;
+  grid-template:
+    'flat flat flat flat flat'
+    'left left right right right'
+    ' footer footer footer footer footer';
+  grid-gap: 10px;
+  
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 10px;
+  font-size: 17px;
+}
