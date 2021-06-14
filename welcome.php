@@ -85,24 +85,26 @@ for (i = 0; i < acc.length; i++) {
   <tr>
     <td>Username</td>
     <td>Email</td>
+    <td>Date of Birth</td>
     <td>Edit</td>
     <td>Delete</td>
   </tr>
 
 <?php
     
-    $name = ($_SESSION['username']);
+    $username = ($_SESSION['username']);
 
-$records = mysqli_query($conn,"SELECT * FROM Users WHERE username='$name'"); // fetch data from database
+$records = mysqli_query($conn,"SELECT * FROM user WHERE username='$username'"); // fetch data from database
 
 while($data = mysqli_fetch_array($records))
 {
 ?>
   <tr>
     <td><?php echo $data['username']; ?></td>
-    <td><?php echo $data['email']; ?></td>    
-    <td><a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a></td>
-    <td><a href="delete.php?id=<?php echo $data['id']; ?>">Delete</a></td>
+    <td><?php echo $data['email']; ?></td>   
+    <td><?php echo $data['DOB']; ?></td> 
+    <td><a href="edit.php?id=<?php echo $data['ID']; ?>">Edit</a></td>
+    <td><a href="delete.php?id=<?php echo $data['ID']; ?>">Delete</a></td>
   </tr>	
 <?php
 }
