@@ -1,5 +1,7 @@
 <?php 
 
+// DATE OF BIRTH FIELD IN THE REGISTRATION FORM
+
 include 'config.php';
 
 error_reporting(0);
@@ -15,13 +17,14 @@ if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
 	$cpassword = md5($_POST['cpassword']);
+	$DOB = $_POST['DOB'];
 
 	if ($password == $cpassword) {
 		$sql = "SELECT * FROM users WHERE email='$email'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO users (username, email, password)
-					VALUES ('$username', '$email', '$password')";
+			$sql = "INSERT INTO users (username, email, password, DOB)
+					VALUES ('$username', '$email', '$password', '$DOB')";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
 				echo "<script>alert('User Registration Complete. Please Login to view your profile.')</script>";
@@ -29,6 +32,7 @@ if (isset($_POST['submit'])) {
 				$email = "";
 				$_POST['password'] = "";
 				$_POST['cpassword'] = "";
+				$_POST['DOB'] = "";
 			} else {
 				echo "<script>alert('Woops! Something Went Wrong.')</script>";
 			}
@@ -68,6 +72,8 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
             </div>
+			<div class="input-group">
+				<input type="date" placeholder="Date of Birth" name="DOB" value="<?php echo $DOB; ?>" required>
             <div class="input-group">
 				<input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 			</div>
