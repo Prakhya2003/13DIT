@@ -2,7 +2,8 @@
 include 'nav_bar.php';
 ?>
 
-<link rel="stylesheet" type="text/css" href="template.css">
+<link rel="stylesheet" type="text/css" href="assets/template.css">
+<title> Steer Home </title>
 
 <body>
     
@@ -54,7 +55,7 @@ for (i = 0; i < acc.length; i++) {
 </script>
     
     
-    <img src="car.jpg" alt="Steering" width="100%" height='300px'>
+    <img src="assets/car.jpg" alt="Steering" width="100%" height='300px'>
 
     
 <!-- Nav Bar is same on every page, common component code -->
@@ -98,17 +99,12 @@ function myFunction() {
         <p> Volunteering is a key element to character and experience building.  </p>
     </div>
     
-    <div class="item3">
-        <p> footer </p>
-    </div>
-    
     <div class="item4">
         <p> Home Page </p>
     </div>
-
-</div>
-
-</body>
-</html>
     
-<!-- Nav Bar is same on every page, common component code -->
+<?php 
+include 'footer.php';
+?>
+    
+<!-- Footer and Navigation Bar is same on every page, common component code -->
