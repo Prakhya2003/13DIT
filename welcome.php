@@ -11,14 +11,14 @@ if (!isset($_SESSION['username'])) {
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="template.css">
+<link rel="stylesheet" type="text/css" href="assets/template.css">
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>My Profile</title>
 </head>
 <body>
     
@@ -72,7 +72,7 @@ for (i = 0; i < acc.length; i++) {
 </script>
     
     
-    <img src="car.jpg" alt="Steering" width="100%" height='300px'>
+    <img src="assets/car.jpg" alt="Steering" width="100%" height='300px'>
 
     
 <!-- Nav Bar is same on every page, common component code -->
@@ -83,6 +83,7 @@ for (i = 0; i < acc.length; i++) {
 
 <table border="2">
   <tr>
+    <td>ID</td>
     <td>Username</td>
     <td>Email</td>
     <td>Date of Birth</td>
@@ -100,6 +101,7 @@ while($data = mysqli_fetch_array($records))
 {
 ?>
   <tr>
+    <td><?php echo $data['ID']; ?></td>
     <td><?php echo $data['username']; ?></td>
     <td><?php echo $data['email']; ?></td>   
     <td><?php echo $data['DOB']; ?></td> 
@@ -115,11 +117,6 @@ while($data = mysqli_fetch_array($records))
     
 <div class="grid-container">
     
-    <div class="item3">
-        <p> footer </p>
-    </div>
-    
-</div>
-    
-</body>
-</html>
+<?php include 'footer.php'; ?>
+
+<!-- continued Footer Code with common Footer.php code -->
