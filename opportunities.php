@@ -1,7 +1,5 @@
 <?php 
-include 'nav_bar.php';     
-//Nav Bar is same on every page, common component code//
-include "config.php"; // Using database connection file here
+include 'nav_bar.php';
 ?>
 
 <link rel="stylesheet" type="text/css" href="assets/template.css">
@@ -64,35 +62,35 @@ for (i = 0; i < acc.length; i++) {
 
 <div class="grid-container">
     
-    <div class="item4">
-        <p> Opportunities Page </p>
+        <?php
+            session_start();
+            if(!isset($_SESSION['username']))
+            {
+        ?>
+    
+    <div class="item1"> 
+        <p> If you would like to sign up to any of the volunteering opportunities, you are required to <a href="login.php">Login</a>. <br> If you have not previously Registered, please do so here; <a href="register.php">Register</a>. </p>
     </div>
+    
+            <?php 
+            }
+            else
+            {
+                echo "Logged In";
+            }
+            ?>
     
     <div class="item2">
         <h3> Below is the Casual Volunteering Schedule for Elizabeth Knox </h3>
         <iframe width="100%" height="500px"frameborder="0" scrolling="no" src="https://epsomgirls-my.sharepoint.com/personal/17027_eggs_school_nz/_layouts/15/Doc.aspx?sourcedoc={852e3996-b044-4b2b-ae31-cf31cb0afc94}&action=embedview&wdAllowInteractivity=False&ActiveCell='Weekly%20Voulnteer%20Requirements'!B2&Item='Weekly%20Voulnteer%20Requirements'!A1%3AL40&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
     </div>
     
-<?php 
-include 'footer.php';
-if(!isset($_SESSION['username']))
-    {
-?>
-    
-    <div class="item1"> 
-        <p> If you would like to sign up to any of the volunteering opportunities, you are required to <a href="login.php">Login</a>. <br> If you have not previously Registered, please do so here; <a href="register.php">Register</a>. </p>
+    <div class="item4">
+        <p> Opportunities Page </p>
     </div>
     
 <?php 
-    }
-    else
-    {
-        Welcome, echo $_SESSION['username'];
-    }
-?>
-    
-</div>
-    
-<?php 
 include 'footer.php';
 ?>
+    
+<!-- Nav Bar is same on every page, common component code -->
