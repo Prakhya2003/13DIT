@@ -76,7 +76,7 @@ for (i = 0; i < acc.length; i++) {
             }
             else
             {
-                include 'Elizabeth_knox_form.php';
+                include 'Elizabeth_knox_form.php'; // Show the form to sign up from
             }
             ?>
     
