@@ -76,7 +76,7 @@ for (i = 0; i < acc.length; i++) {
             }
             else
             {
-                echo "Logged In";
+                include 'Elizabeth_knox_form.php';
             }
             ?>
     
