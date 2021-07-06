@@ -5,26 +5,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, textarea, label, p { 
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
-      }
-      h1 {
-      position: absolute;
-      margin: 0;
-      font-size: 40px;
-      color: #fff;
-      z-index: 2;
-      line-height: 83px;
-      }
       textarea {
       width: calc(100% - 12px);
       padding: 5px;
@@ -34,31 +14,13 @@
       justify-content: center;
       align-items: center;
       height: inherit;
-      padding: 20px;
       }
       form {
-      width: 100%;
+      width: 80%;
       padding: 20px;
       border-radius: 6px;
       background: #fff;
       box-shadow: 0 0 8px  #669999; 
-      }
-      .banner {
-      position: relative;
-      height: 300px;
-      background-image: url("/uploads/media/default/0001/02/8070c999efd1a155ad843379a5508d16f544aeaf.jpeg");  
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      }
-      .banner::after {
-      content: "";
-      background-color: rgba(0, 0, 0, 0.3); 
-      position: absolute;
-      width: 100%;
-      height: 100%;
       }
       input, select, textarea {
       margin-bottom: 10px;
@@ -181,17 +143,20 @@
       button:hover {
       background:  #a3c2c2;
       }
-      @media (min-width: 568px) {
+/*      @media (min-width: 568px) {
       .name-item, .city-item {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       }
+*/
+/*
       .name-item input, .name-item div {
       width: calc(50% - 20px);
       }
       .name-item div input {
-      width:97%;}
+      width:97%;} 
+*/
       .name-item div label {
       display:block;
       padding-bottom:5px;
@@ -202,24 +167,21 @@
   <body>
     <div class="testbox">
       <form action="/">
-        <div class="banner">
-          <h1>Elizabeth Knox</h1>
-        </div>
         <br/>
-        <p>Sign Up to Volunteer at Elizabeth Knox.</p>
+        <p>Sign Up to Volunteer at Elizabeth Knox</p>
         <br/>
         <div class="colums">
           <div class="item">
-            <label for="eaddress">Email Address<span>*</span></label>
-            <input id="eaddress" type="text"   name="eaddress" required/>
+            <label for="email">Email Address<span>*</span></label>
+            <input id="email" type="text"   name="email" required/>
           </div>
           <div class="item">
             <label for="phone">Phone Number<span>*</span></label>
             <input id="phone" type="tel"   name="phone" required/>
           </div>
           <div class="item">
-            <label for="street">Suburb<span>*</span></label>
-            <input id="street" type="text"   name="street" required/>
+            <label for="suburb">Suburb<span>*</span></label>
+            <input id="suburb" type="text"   name="suburb" required/>
           </div>
           <div class="item">
             <label for="city">City<span>*</span></label>
@@ -228,7 +190,7 @@
         </div>
         <div class="week">
           <div class="question">
-            <label>Days Attending </label>
+            <label>Which Day?</label>
             <div class="question-answer">
               <div>
                 <input type="radio" value="none" id="radio_3" name="day"/>
@@ -287,8 +249,8 @@
           </div>
         </div>
         <div class="item">
-          <label for="visit">Do you have any relevant experience or information you would like to include?</label>
-          <textarea id="visit" rows="3"></textarea>
+          <label for="others">Do you have any relevant experience or information you would like to include?</label>
+          <textarea id="others" rows="3"></textarea>
         </div>
         <div class="btn-block">
           <button type="submit" href="/">Submit</button>
