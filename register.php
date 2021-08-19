@@ -1,7 +1,5 @@
 <?php 
 
-// DATE OF BIRTH FIELD IN THE REGISTRATION FORM
-
 include 'config.php';
 
 error_reporting(0);
@@ -14,25 +12,27 @@ if (isset($_SESSION['username'])) {
 
 if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
+	$fullname = $_POST['fullname'];
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
 	$cpassword = md5($_POST['cpassword']);
 	$DOB = $_POST['DOB'];
 
 	if ($password == $cpassword) {
-		$sql = "SELECT * FROM users WHERE email='$email'";
+		$sql = "SELECT * FROM user WHERE email='$email'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO users (username, email, password, DOB)
-					VALUES ('$username', '$email', '$password', '$DOB')";
+			$sql = "INSERT INTO user (username, fullname, email, password, DOB)
+					VALUES ('$username', '$fullname', '$email', '$password', '$DOB')";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
 				echo "<script>alert('User Registration Complete. Please Login to view your profile.')</script>";
 				$username = "";
+				$fullname = "";
 				$email = "";
 				$_POST['password'] = "";
 				$_POST['cpassword'] = "";
-				$_POST['DOB'] = "";
+				$DOB = "";
 			} else {
 				echo "<script>alert('Woops! Something Went Wrong.')</script>";
 			}
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="assets/login_register_stylesheet.css">
 
 	<title>Register</title>
 </head>
@@ -67,15 +67,18 @@ if (isset($_POST['submit'])) {
 				<input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
 			</div>
 			<div class="input-group">
+				<input type="text" placeholder="Full Name" name="fullname" value="<?php echo $fullname; ?>" required>
+			</div>
+			<div class="input-group">
 				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
 			</div>
 			<div class="input-group">
 				<input type="date" placeholder="Date of Birth" name="DOB" value="<?php echo $DOB; ?>" required>
 			</div>
-		   	 <div class="input-group">
+		    <div class="input-group">
 				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
-            		</div>
-            		<div class="input-group">
+            </div>
+            <div class="input-group">
 				<input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 			</div>
 			<div class="input-group">
