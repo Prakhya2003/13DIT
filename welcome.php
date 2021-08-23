@@ -81,7 +81,9 @@ for (i = 0; i < acc.length; i++) {
 
     <div class="item4">
     
-    <?php echo "<h1>Welcome " . $_SESSION['user_id'] . "</h1>"; ?>
+    <?php echo "<h1>Welcome " . $_SESSION['user_id'] . "</h1>"; ?> <!-- Personalised welcome -->
+    
+<!-- user registration details table -->
     
     <h2>User Details</h2>
 
@@ -122,12 +124,41 @@ while($data = mysqli_fetch_array($records))
 
 <a href="delete.php?id=<?php echo $data['ID']; ?>">Delete</a> <br><br>
 
+<!-- previous sign ups table -->
+    
+    <h2>Your previous volunteering experience on Steer</h2>
+
+<table border="2" align='center'>
+  <tr>
+    <td style="padding:10px">Date</td>
+    <td style="padding:10px">Activity</td>
+    <td style="padding:10px">Phone Number</td>
+    <td style="padding:10px">Suburb</td>
+  </tr>
+
+<?php
+
+    $user_id = ($_SESSION['user_id']);
+
+$records = mysqli_query($conn,"SELECT * FROM sign_ups WHERE user_id='$user_id'"); // fetch data from database
+
+while($data = mysqli_fetch_array($records))
+{
+?>
+  <tr>
+    <td style="padding:10px"><?php echo $data['date']; ?></td>
+    <td style="padding:10px"><?php echo $data['activity']; ?></td>
+    <td style="padding:10px"><?php echo $data['phone']; ?></td>
+    <td style="padding:10px"><?php echo $data['suburb']; ?></td>   
+  </tr>	
+
+<?php
+}
+?>
+
 <a href="logout.php">Logout</a> <br><br>
 
 </div>
-</div>
-    
-<div class="grid-container">
     
 <?php include 'footer.php'; ?>
 
