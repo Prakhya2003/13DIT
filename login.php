@@ -6,22 +6,22 @@ session_start();
 
 error_reporting(0);
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user_id'])) {
     header("Location: welcome.php");
 }
 
 if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
+	$user_id = $_POST['user_id'];
 	$password = md5($_POST['password']);
 
-	$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+	$sql = "SELECT * FROM user WHERE user_id='$user_id' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $row['username'];
+		$_SESSION['user_id'] = $row['user_id'];
 		header("Location: welcome.php");
 	} else {
-		echo "<script>alert('The entered Email or Password is Wrong.')</script>";
+		echo "<script>alert('The entered Username or Password is Wrong.')</script>";
 	}
 }
 
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="assets/login_register_stylesheet.css">
 
 	<title>Login Form</title>
 </head>
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 		<form action="" method="POST" class="login-email">
 			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
 			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+				<input type="text" placeholder="Your Username" name="user_id" value="<?php echo $user_id; ?>" required>
 			</div>
 			<div class="input-group">
 				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
@@ -52,7 +52,8 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<button name="submit" class="btn">Login</button>
 			</div>
-			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
+			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a></p> <br>
+			<p class="login-register-text">Wish to do this later? <a href="index.php">Go Home</a></p>
 		</form>
 	</div>
 </body>
