@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 	$DOB = $_POST['DOB'];
 
 	if ($password == $cpassword) {
-		$sql = "SELECT * FROM user WHERE email='$email'";
+		$sql = "SELECT * FROM user WHERE user_id='$user_id'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
 			$sql = "INSERT INTO user (user_id, fullname, email, password, DOB)
@@ -37,9 +37,8 @@ if (isset($_POST['submit'])) {
 				echo "<script>alert('Woops! Something Went Wrong.')</script>";
 			}
 		} else {
-			echo "<script>alert(Email Already Exists. Please login or choose a different Email.')</script>";
+			echo "<script>alert('Username Already Exists. Please login or choose a different username.')</script>";
 		}
-		
 	} else {
 		echo "<script>alert('Please try again, the Password does not match.')</script>";
 	}
