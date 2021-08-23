@@ -7,7 +7,7 @@ include 'config.php'; // establish connection with database
 error_reporting(0); 
 
 if (isset($_POST['submit'])) {        // If all okay, Add record with filled out data
-	$user_id = $_POST['user_id'];
+	$user_id = $_SESSION['user_id'];
 	$date = $_POST['date'];
 	$activity = $_POST['activity'];
 	$phone = $_POST['phone'];
@@ -48,20 +48,22 @@ if (isset($_POST['submit'])) {        // If all okay, Add record with filled out
 		<form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Volunteering Sign Up</p>
 			<div class="input-group">
-				<input type="text" placeholder="Your Username" name="user_id" value="<?php echo $user_id; ?>" required>
-			</div>
-			<div class="input-group">
+				<p> Which date do you wish to sign up for?</p>
 				<input type="date" placeholder="Chosen Date" name="date" value="<?php echo $date; ?>" required>
 			</div>
 			<div class="input-group">
+			    <p> What is the activity you wish to volunteer at? </p>
 				<input type="text" placeholder="Chosen Activity" name="activity" value="<?php echo $activity; ?>" required>
 			</div>
 			<div class="input-group">
+			    <p> What is your contact phone number? </p>
 				<input type="number" placeholder="Your Phone Number" name="phone" value="<?php echo $phone; ?>">
 			</div>
 			<div class="input-group">
+			    <p> What is the suburb you prefer? (Optional) </p>
 				<input type="text" placeholder="Your Suburb" name="suburb" value="<?php echo $suburb; ?>">
 			</div>
+			<br>
 			<div class="input-group">
 				<button name="submit" class="btn">Sign Up</button>
 			</div>
