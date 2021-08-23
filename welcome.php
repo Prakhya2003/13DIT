@@ -5,7 +5,7 @@ include 'nav_bar.php';
 
 session_start();
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
 }
 
@@ -77,43 +77,55 @@ for (i = 0; i < acc.length; i++) {
     
 <!-- Nav Bar is same on every page, common component code -->
     
-    <?php echo "<h1>Welcome " . $_SESSION['username'] . "</h1>"; ?>
+<div class="grid-container">
+
+    <div class="item4">
+    
+    <?php echo "<h1>Welcome " . $_SESSION['user_id'] . "</h1>"; ?>
     
     <h2>User Details</h2>
 
-<table border="2">
+<table border="2" align='center'>
   <tr>
-    <td>ID</td>
-    <td>Username</td>
-    <td>Email</td>
-    <td>Date of Birth</td>
-    <td>Edit</td>
-    <td>Delete</td>
+    <td style="padding:10px">ID</td>
+    <td style="padding:10px">Username</td>
+    <td style="padding:10px">Full Name</td>
+    <td style="padding:10px">Email</td>
+    <td style="padding:10px">Date of Birth</td>
   </tr>
 
 <?php
     
-    $username = ($_SESSION['username']);
+    $user_id = ($_SESSION['user_id']);
 
-$records = mysqli_query($conn,"SELECT * FROM user WHERE username='$username'"); // fetch data from database
+$records = mysqli_query($conn,"SELECT * FROM user WHERE user_id='$user_id'"); // fetch data from database
 
 while($data = mysqli_fetch_array($records))
 {
 ?>
   <tr>
-    <td><?php echo $data['ID']; ?></td>
-    <td><?php echo $data['username']; ?></td>
-    <td><?php echo $data['email']; ?></td>   
-    <td><?php echo $data['DOB']; ?></td> 
-    <td><a href="edit.php?id=<?php echo $data['ID']; ?>">Edit</a></td>
-    <td><a href="delete.php?id=<?php echo $data['ID']; ?>">Delete</a></td>
+    <td style="padding:10px"><?php echo $data['ID']; ?></td>
+    <td style="padding:10px"><?php echo $data['user_id']; ?></td>
+    <td style="padding:10px"><?php echo $data['fullname']; ?></td>
+    <td style="padding:10px"><?php echo $data['email']; ?></td>   
+    <td style="padding:10px"><?php echo $data['DOB']; ?></td>
+
   </tr>	
+
 <?php
 }
 ?>
-</table>
 
-<a href="logout.php">Logout</a>
+</table> <br>
+
+<a href="edit.php?id=<?php echo $data['ID']; ?>">Edit</a> 
+
+<a href="delete.php?id=<?php echo $data['ID']; ?>">Delete</a> <br><br>
+
+<a href="logout.php">Logout</a> <br><br>
+
+</div>
+</div>
     
 <div class="grid-container">
     
