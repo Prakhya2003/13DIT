@@ -1,15 +1,15 @@
 <?php
 
-include "config.php"; // Using database connection file here
+include "config.php"; // Using database connection file 
 
 $id = (isset($_GET['id']) ? $_GET['id'] : ''); // get id through query string
 
-$del = mysqli_query($conn,"delete from Users where id = '$id'"); // delete query
+$del = mysqli_query($conn,"delete from user where ID = '$id'"); // delete entry of this record 
 
 if($del)
 {
     mysqli_close($conn); // Close connection
-    header("location:index.php"); // redirects to all records page
+    header("location:logout.php"); // redirects to post logout code - i.e index page
     exit;	
 }
 else
