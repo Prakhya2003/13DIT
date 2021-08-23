@@ -127,6 +127,8 @@ while($data = mysqli_fetch_array($records))
 <!-- previous sign ups table -->
     
     <h2>Your previous volunteering experience on Steer</h2>
+    
+    <p>Elizabeth Knox</p>
 
 <table border="2" align='center'>
   <tr>
