@@ -3,6 +3,7 @@ include 'nav_bar.php';
 ?>
 
 <link rel="stylesheet" type="text/css" href="assets/template.css">
+
 <title> Steer Home </title>
 
 <body>
