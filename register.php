@@ -6,12 +6,12 @@ error_reporting(0);
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user_id'])) {
     header("Location: welcome.php");
 }
 
 if (isset($_POST['submit'])) {
-	$username = $_POST['username'];
+	$user_id = $_POST['user_id'];
 	$fullname = $_POST['fullname'];
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -19,15 +19,15 @@ if (isset($_POST['submit'])) {
 	$DOB = $_POST['DOB'];
 
 	if ($password == $cpassword) {
-		$sql = "SELECT * FROM user WHERE username='$username'";
+		$sql = "SELECT * FROM user WHERE email='$email'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO user (username, fullname, email, password, DOB)
-					VALUES ('$username', '$fullname', '$email', '$password', '$DOB')";
+			$sql = "INSERT INTO user (user_id, fullname, email, password, DOB)
+					VALUES ('$user_id', '$fullname', '$email', '$password', '$DOB')";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
 				echo "<script>alert('User Registration Complete. Please Login to view your profile.')</script>";
-				$username = "";
+				$user_id = "";
 				$fullname = "";
 				$email = "";
 				$_POST['password'] = "";
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 				echo "<script>alert('Woops! Something Went Wrong.')</script>";
 			}
 		} else {
-			echo "<script>alert(Username Already Exists. Please login or choose a different username.')</script>";
+			echo "<script>alert(Email Already Exists. Please login or choose a different Email.')</script>";
 		}
 		
 	} else {
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
 		<form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
 			<div class="input-group">
-				<input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
+				<input type="text" placeholder="Your Username" name="user_id" value="<?php echo $user_id; ?>" required>
 			</div>
 			<div class="input-group">
 				<input type="text" placeholder="Full Name" name="fullname" value="<?php echo $fullname; ?>" required>
