@@ -32,6 +32,11 @@ if(isset($_POST['update'])) // when click on Update button
 ?>
 
 <link rel="stylesheet" type="text/css" href="assets/template.css">
+
+<div class="grid-container">
+
+    <div class="item4">
+
 <title> Update Profile </title>
 
 <h3>Update Profile Details</h3>
@@ -44,4 +49,13 @@ if(isset($_POST['update'])) // when click on Update button
 </form>
 
 <p> Here you can edit your Profile Details incing your Name, Email and Date of Birth. <br><br> Once you have edited as per your wish, press the Update button. <br><br> 
-The website will redirect you to the home page. Please Login with any updated details to continue browsing. </p>
+The website will redirect you to the home page. Please Login with any updated details to continue browsing. 
+<br><br>
+Do you wish to go back without editing? <a href="index.php">Go Home</a> <br><br>
+Wish to view your profile? <a href="welcome.php">My Profile</a> <br><br>
+Please note that all the information you provide in this registration will be stored on this website's database. This will be later displayed on 'My Profile' for you to view on logging in. The information can be edited later if you wish. <br> None of the registration information will be shared with any other organisation at any point.
+
+</p>
+
+</div>
+</div>
