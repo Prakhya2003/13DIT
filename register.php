@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 	$DOB = $_POST['DOB'];
 
 	if ($password == $cpassword) {
-		$sql = "SELECT * FROM user WHERE email='$email'";
+		$sql = "SELECT * FROM user WHERE username='$username'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
 			$sql = "INSERT INTO user (username, fullname, email, password, DOB)
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 				echo "<script>alert('Woops! Something Went Wrong.')</script>";
 			}
 		} else {
-			echo "<script>alert(Email Already Exists. Please login or use a different email account.')</script>";
+			echo "<script>alert(Username Already Exists. Please login or choose a different username.')</script>";
 		}
 		
 	} else {
@@ -84,7 +84,9 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<button name="submit" class="btn">Register</button>
 			</div>
-			<p class="login-register-text">Have an account? <a href="login.php">Login Here</a>.</p>
+			<p class="login-register-text">Have an account? <a href="login.php">Login Here</a>.</p> <br><br>
+			<p class="login-register-text">Wish to do this later? <a href="index.php">Go Home</a></p> <br><br>
+			<p> Please note that all the information you provide in this registration will be stored on this website's database. This will be later displayed on 'My Profile' for you to view on logging in. The information can be edited later if you wish. <br> None of the registration information will be shared with any other organisation at any point.</p>
 		</form>
 	</div>
 </body>
