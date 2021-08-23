@@ -100,7 +100,7 @@ for (i = 0; i < acc.length; i++) {
     
     $user_id = ($_SESSION['user_id']);
 
-$records = mysqli_query($conn,"SELECT * FROM user WHERE user_id='$user_id'"); // fetch data from database
+$records = mysqli_query($conn,"SELECT * FROM user WHERE user_id='$user_id'"); // fetch data from user info table
 
 while($data = mysqli_fetch_array($records))
 {
@@ -140,25 +140,30 @@ while($data = mysqli_fetch_array($records))
 
     $user_id = ($_SESSION['user_id']);
 
-$records = mysqli_query($conn,"SELECT * FROM sign_ups WHERE user_id='$user_id'"); // fetch data from database
+$records = mysqli_query($conn,"SELECT * FROM sign_ups WHERE user_id='$user_id'"); // fetch data from sign ups table
 
 while($data = mysqli_fetch_array($records))
 {
 ?>
   <tr>
-    <td style="padding:10px"><?php echo $data['date']; ?></td>
-    <td style="padding:10px"><?php echo $data['activity']; ?></td>
-    <td style="padding:10px"><?php echo $data['phone']; ?></td>
-    <td style="padding:10px"><?php echo $data['suburb']; ?></td>   
+    <td style="padding:10px"><?php echo $data['Date']; ?></td>
+    <td style="padding:10px"><?php echo $data['Activity']; ?></td>
+    <td style="padding:10px"><?php echo $data['Phone']; ?></td>
+    <td style="padding:10px"><?php echo $data['Suburb']; ?></td>   
   </tr>	
 
 <?php
 }
 ?>
 
+</table> <br>
+
 <a href="logout.php">Logout</a> <br><br>
 
 </div>
+</div>
+
+<div class="grid-container">
     
 <?php include 'footer.php'; ?>
 
