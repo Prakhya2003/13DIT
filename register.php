@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 					VALUES ('$user_id', '$fullname', '$email', '$password', '$DOB')";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
-				echo "<script>alert('User Registration Complete. Please Login to view your profile.')</script>";
+				echo "<script>alert('User Registration Complete. Please Login to view your profile and sign up for volunteering opportunities.'); window.location.href='login.php';</script>";
 				$user_id = "";
 				$fullname = "";
 				$email = "";
@@ -71,6 +71,7 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
 			</div>
+			<p>  Your Date of Birth</p>
 			<div class="input-group">
 				<input type="date" placeholder="Date of Birth" name="DOB" value="<?php echo $DOB; ?>" required>
 			</div>
