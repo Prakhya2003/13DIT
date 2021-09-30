@@ -83,6 +83,8 @@ for (i = 0; i < acc.length; i++) {
     
     <?php echo "<h1>Welcome " . $_SESSION['user_id'] . "</h1>"; ?> <!-- Personalised welcome -->
     
+    <p>This is your profile. Here you can view, edit or delete your information. Along with that, you can see a glimpse of everytime you have steped out of your comfort zone and signed up for a volunteering opportunity on steer. So go ahead to the <a href = "opportunities.php">opportunities page</a> and continue adding to your experiences. </p>
+    
 <!-- user registration details table -->
     
     <h2>User Details</h2>
@@ -128,7 +130,7 @@ while($data = mysqli_fetch_array($records))
     
     <h2>Your previous volunteering experience on Steer</h2>
     
-    <p>Elizabeth Knox</p>
+    <p>Volunteering Organisation One</p>
 
 <table border="2" align='center'>
   <tr>
