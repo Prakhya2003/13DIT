@@ -1,3 +1,1 @@
-# 13DIT
-
-# This is the description for my digital outcome
+# 13DIT Steer Web Development Version Control
