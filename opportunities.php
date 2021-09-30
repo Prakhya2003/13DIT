@@ -60,7 +60,7 @@ for (i = 0; i < acc.length; i++) {
     
 <!-- Nav Bar is same on every page, common component code -->
 
-<div class="grid-container">
+<div class="grid-container" style="text-align:center;">
     
         <?php
             session_start();
@@ -69,25 +69,28 @@ for (i = 0; i < acc.length; i++) {
         ?>
     
     <div class="item1"> 
-        <p> If you would like to sign up to any of the volunteering opportunities, you are required to <a href="login.php">Login</a>. <br> If you have not previously Registered, please do so here; <a href="register.php">Register</a>. <br> <br> Please Note that all the information you provide on this sign up form will be shared with the administration for volunteering at this specific organisation. No other information (including registration) will be shared with the organisation. This entry will be recorded and displayed as a record of achivement and experience on the 'My Profile' page.</p>
+        <p style="text-align:left;"> If you would like to sign up to any of the volunteering opportunities, <br> you are required to <a href="login.php">Login</a>. <br> If you have not previously Registered, please do so here; <a href="register.php">Register</a>. <br> <br> Please Note that all the information you provide on this sign up form will be shared with the administration for volunteering at this specific organisation. No other information (including registration) will be shared with the organisation. This entry will be recorded and displayed as a record of achivement and experience on the 'My Profile' page.</p>
     </div>
     
             <?php 
             }
             else
             {
-                include 'Elizabeth_knox_form.php';
+                include 'sign_up_form.php';
             }
             ?>
     
     <div class="item2">
-        <h3> Below is the Casual Volunteering Schedule for Elizabeth Knox </h3>
-        <iframe width="100%" height="500px"frameborder="0" scrolling="no" src="https://epsomgirls-my.sharepoint.com/personal/17027_eggs_school_nz/_layouts/15/Doc.aspx?sourcedoc={852e3996-b044-4b2b-ae31-cf31cb0afc94}&action=embedview&wdAllowInteractivity=False&ActiveCell='Weekly%20Voulnteer%20Requirements'!B2&Item='Weekly%20Voulnteer%20Requirements'!A1%3AL40&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
-        <p> Alternatively, click this<a href="https://epsomgirls-my.sharepoint.com/:x:/g/personal/17027_eggs_school_nz/EZY5LoVEsCtLrjHPMcsK_JQBNms9Kwa0FTGSjhfV4H6mCQ?e=HJ8DCP"> Link </a>to open the timetable in another tab. </p>
+        <h3> Below is the Casual Volunteering Schedule for Volunteering Organisation </h3>
+        <iframe width="100%" height="400px"frameborder="0" scrolling="no" title="Volunteering schedule" src="assets/plan_pdf.pdf"> </iframe>
+        <p> Alternatively, to view an active Microsoft Excel file which click this <a href="https://epsomgirls-my.sharepoint.com/:x:/g/personal/17027_eggs_school_nz/EZY5LoVEsCtLrjHPMcsK_JQBNms9Kwa0FTGSjhfV4H6mCQ?e=HJ8DCP">Link</a>. <br>
+            If you would like to view in another tab or download the PDF file, use this <a href="assets/plan_pdf.pdf">Link</a>.
+        </p>
     </div>
     
     <div class="item4">
-        <p> Opportunities Page </p>
+        <h2> Opportunities </h2>
+        <p>Here you have the option of signing up to the various volunteering opportunities provided. If the organisation finds that you are appropriate for the role, they will contact you directly to work out the details. </p>
     </div>
     
 <?php 
