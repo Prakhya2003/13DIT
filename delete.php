@@ -2,9 +2,9 @@
 
 include "config.php"; // Using database connection file 
 
-$id = (isset($_GET['id']) ? $_GET['id'] : ''); // get id through query string
+$user_id = (isset($_GET['user_id']) ? $_GET['user_id'] : ''); // get id through query string
 
-$del = mysqli_query($conn,"delete from user where ID = '$id'"); // delete entry of this record 
+$del = mysqli_query($conn,"delete from user where user_id = '$user_id'"); // delete entry of this record 
 
 if($del)
 {
