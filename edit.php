@@ -1,64 +1,174 @@
-<?php
+<?php 
 
 include "config.php"; // Using database connection file here
+include 'nav_bar.php';
 
-$user_id = (isset($_GET['user_id']) ? $_GET['user_id'] : ''); // get id through query string
+session_start();
 
-$qry = mysqli_query($conn,"select * from user where user_id='$user_id'"); // select query
-
-$data = mysqli_fetch_array($qry); // fetch data
-
-if(isset($_POST['update'])) // when click on Update button
-{
-    echo "<script>alert('User Profile Successfully Updated')</script>";
-    
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $DOB = $_POST['DOB'];
-	
-    $edit = mysqli_query($conn,"update user set fullname='$fullname', email='$email', DOB='$DOB' where user_id='$user_id'");
-	
-    if($edit)
-    {
-        echo "<script>alert('User Profile Successfully Updated')</script>";
-        mysqli_close($conn); // Close connection
-        header("location:logout.php"); // logs out
-        exit;
-    }
-    else
-    {
-            echo "<script>alert('Connection Failed')</script>";
-	    echo mysqli_error($conn);
-    }    	
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
 }
 
 ?>
 
 <link rel="stylesheet" type="text/css" href="assets/template.css">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+</head>
+<body>
+    
+<body>
+    
+<!-- 1st Drop Down -->
+<button class="accordion"> ≡ Menu</button>
+
+<div class="panel">
+  
+  <!-- Nav Bar Inside Drop Down -->
+  <div class="topnav" id="myTopnav">
+  <a href="index.php">Home</a>
+  <a href="opportunities.php"> Opportunities</a>
+  <a href="welcome.php" class="active"> My Profile </a>
+  <a href="register.php">Register</a>
+  <a href="login.php">Login</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+  
+</div>
+
+<!-- Nav Bar Javascript --><script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+</div>
+
+<!-- Accordion Javascript --> <script> 
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+    
+    
+    <img src="assets/car.jpg" alt="Steering" width="100%" height='300px'>
+
+    
+<!-- Nav Bar is same on every page, common component code -->
+    
 <div class="grid-container">
 
     <div class="item4">
+    
+    <?php echo "<h1>Welcome " . $_SESSION['user_id'] . "</h1>"; ?> <!-- Personalised welcome -->
+    
+    <p>This is your profile. Here you can view, edit or delete your information. Along with that, you can see a glimpse of everytime you have steped out of your comfort zone and signed up for a volunteering opportunity on steer. So go ahead to the <a href = "opportunities.php">opportunities page</a> and continue adding to your experiences. </p>
+    
+<!-- user registration details table -->
+    
+    <h2>User Details</h2>
 
-<title> Update Profile </title>
+<table border="2" align='center'>
+  <tr>
+    <td style="padding:10px">ID</td>
+    <td style="padding:10px">Username</td>
+    <td style="padding:10px">Full Name</td>
+    <td style="padding:10px">Email</td>
+    <td style="padding:10px">Date of Birth</td>
+  </tr>
 
-<h3>Update Profile Details</h3>
+<?php
+    
+    $user_id = ($_SESSION['user_id']);
 
-<form method="POST">
-  <input type="text" name="fullname" value="<?php echo $data['fullname'] ?>" placeholder="Enter New Full Name">
-  <input type="text" name="email" value="<?php echo $data['email'] ?>" placeholder="Enter New Email">
-  <input type="date" name="DOB" value="<?php echo $data['DOB'] ?>" placeholder="Enter New Date of Birth">
-  <input type="submit" name="update" value="Update">
-</form>
-	    
-<p> Here you can edit your Profile Details including your Name, Email and Date of Birth. <br><br> Once you have edited as per your wish, press the Update button. <br><br> 
-The website will redirect you to the home page. Please Login with any updated details to continue browsing. 
-<br><br>
-Do you wish to go back without editing? <a href="index.php">Go Home</a> <br><br>
-Wish to view your profile? <a href="welcome.php">My Profile</a> <br><br>
-Please note that all the information you provide in this registration will be stored on this website's database. This will be later displayed on 'My Profile' for you to view on logging in. The information can be edited later if you wish. <br> None of the registration information will be shared with any other organisation at any point.
+$records = mysqli_query($conn,"SELECT * FROM user WHERE user_id='$user_id'"); // fetch data from user info table
 
-</p>
+while($data = mysqli_fetch_array($records))
+{
+?>
+  <tr>
+    <td style="padding:10px"><?php echo $data['ID']; ?></td>
+    <td style="padding:10px"><?php echo $data['user_id']; ?></td>
+    <td style="padding:10px"><?php echo $data['fullname']; ?></td>
+    <td style="padding:10px"><?php echo $data['email']; ?></td>   
+    <td style="padding:10px"><?php echo $data['DOB']; ?></td>
+
+  </tr>	
+
+</table> <br>
+
+<a href="edit.php?id=<?php echo $data['ID']; ?>">Edit</a> 
+
+<a href="delete.php?id=<?php echo $data['ID']; ?>">Delete</a> <br><br>
+
+<?php
+}
+?>
+
+<!-- previous sign ups table -->
+    
+    <h2>Your previous volunteering experience on Steer</h2>
+    
+    <p>Volunteering Organisation One</p>
+
+<table border="2" align='center'>
+  <tr>
+    <td style="padding:10px">Date</td>
+    <td style="padding:10px">Activity</td>
+    <td style="padding:10px">Phone Number</td>
+    <td style="padding:10px">Suburb</td>
+  </tr>
+
+<?php
+
+    $user_id = ($_SESSION['user_id']);
+
+$records = mysqli_query($conn,"SELECT * FROM sign_ups WHERE user_id='$user_id'"); // fetch data from sign ups table
+
+while($data = mysqli_fetch_array($records))
+{
+?>
+  <tr>
+    <td style="padding:10px"><?php echo $data['Date']; ?></td>
+    <td style="padding:10px"><?php echo $data['Activity']; ?></td>
+    <td style="padding:10px"><?php echo $data['Phone']; ?></td>
+    <td style="padding:10px"><?php echo $data['Suburb']; ?></td>   
+  </tr>	
+
+<?php
+}
+?>
+
+</table> <br>
+
+<a href="logout.php">Logout</a> <br><br>
 
 </div>
 </div>
+
+<div class="grid-container">
+    
+<?php include 'footer.php'; ?>
+
+<!-- continued Footer Code with common Footer.php code -->
