@@ -1,16 +1,10 @@
-<!-- Menu Drop Down  -->
-<!DOCTYPE html>
-<html>
-<head>
-    
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Menu Drop Down CSS Code -->
 
 <style>
 
 /* Accordion CSS */
 
-.accordion {
+.accordion {   
   background-color: #6c5ce7;
   color: white;
   cursor: pointer;
@@ -24,7 +18,7 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.active, .accordion:hover {
+.active, .accordion:hover {     /* Active Colour change to improve usability */
   background-color: #eee; 
   color: black;
 }
@@ -58,7 +52,7 @@
   color: white;
 }
 
-.topnav a.active {
+.topnav a.active {    /* Active Colour change to improve usability */
   background-color: #a29bfe;
   color: white;
 }
@@ -67,6 +61,8 @@
   display: none;
 }
 
+/* When window width is smaller than 600px  */
+	
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
@@ -90,4 +86,3 @@
 }
 
 </style>
-</head>
