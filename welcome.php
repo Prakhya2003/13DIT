@@ -144,7 +144,7 @@ while($data = mysqli_fetch_array($records)) // display current user profile deta
 
 $records = mysqli_query($conn,"SELECT * FROM sign_ups WHERE user_id='$user_id'"); // fetch data from sign ups table
 
-while($data = mysqli_fetch_array($records))  // display current user's sign uped entries
+while($data = mysqli_fetch_array($records))  // display current user's sign up entries in a list
 {
 ?>
   <tr>
@@ -153,12 +153,12 @@ while($data = mysqli_fetch_array($records))  // display current user's sign uped
     <td style="padding:10px"><?php echo $data['Phone']; ?></td>
     <td style="padding:10px"><?php echo $data['Suburb']; ?></td>   
   </tr>	
-  
- </table> <br>
 
 <?php
 } // end php code for sign up details (sign_ups table) from database
 ?>
+
+ </table> <br>
 
 <a href="logout.php">Logout</a> <br><br> <!-- link that allows users to log out from the currently logged in profile -->
 
