@@ -1,5 +1,6 @@
 <?php
 
+include 'nav_bar.php'; //include the common code for navigation bar
 include "config.php"; // Using database connection file here
 
 $id = (isset($_GET['id']) ? $_GET['id'] : ''); // get id through query string
@@ -77,4 +78,4 @@ Please note that all the information you provide in this registration will be st
 </div>
 
 </body>
-</html> <!-- End of Edit Page code -->
+</html>
