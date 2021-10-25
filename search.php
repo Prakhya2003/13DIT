@@ -5,10 +5,10 @@
         <title>Search</title>
     </head>
 
-<body>
-
+<body align='center'>
+<h2> Search for Sign Ups from Users for any particular Activity</h2>
 <form action="phpsearch.php" method="post">
-Search Activity: <input type="text" name="search"><br>
+Search Activity: <input type="text" name="search"><br><br>
 <input type ="submit">
 </form>
 
